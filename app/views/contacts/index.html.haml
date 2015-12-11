@@ -3,10 +3,13 @@
 %table
   %thead
     %tr
+      %th User
       %th Email
       %th Phone
       %th Address
       %th Name
+      %th Created
+      %th Updated
       %th
       %th
       %th
@@ -14,14 +17,17 @@
   %tbody
     - @contacts.each do |contact|
       %tr
+        %td= contact.user
         %td= contact.email
         %td= contact.phone
         %td= contact.address
         %td= contact.name
-        %td= link_to 'Show', contact
-        %td= link_to 'Edit', edit_contact_path(contact)
-        %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= contact.created_at
+        %td= contact.updated_at
+        %td= link_to 'Show', contact, class: 'button tiny success'
+        %td= link_to 'Edit', edit_contact_path(contact), class: 'button tiny success'
+        %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button tiny alert'
 
 %br
 
-= link_to 'New Contact', new_contact_path
+= link_to 'New Contact', new_contact_path, class: 'button tiny success'
