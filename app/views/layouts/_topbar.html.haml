@@ -1,0 +1,21 @@
+%nav.top-bar{"data-topbar" => "", :role => "navigation"}
+  %ul.title-area
+    %li.name
+      %h1
+        %a{:href => "/"} Address Book
+    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        %span Menu
+  %section.top-bar-section
+    / Right Nav Section
+    %ul.right
+      - if user_signed_in?
+        %li
+          %a.hide-for-small-only
+          %a.show-for-small-only My Profile
+        %li
+          = link_to('Logout', destroy_user_session_path, :method => :delete)
+      - else
+        %li
+          = link_to('Login', new_user_session_path)
