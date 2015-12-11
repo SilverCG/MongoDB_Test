@@ -7,4 +7,8 @@ class Contact
   field :name, type: String
 
   belongs_to :user
+
+  validates_presence_of :name
+  before_save { |contact| contact.phone = phone.gsub(/[^0-9]/, "") }
+
 end

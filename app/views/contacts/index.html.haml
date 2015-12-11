@@ -11,7 +11,7 @@
               = contact.name
             %li
               %b Phone:
-              = contact.phone
+              = number_to_phone(contact.phone, area_code: true)
             %li
               %b email:
               = contact.email

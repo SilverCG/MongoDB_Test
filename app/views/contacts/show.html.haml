@@ -1,18 +1,25 @@
 %p#notice= notice
+%div.small-12.contact
+  %div.row
+    %ul.small-12.large-8.columns
+      %li
+        %b Name:
+        = @contact.name
+      %li
+        %b Phone:
+        = number_to_phone(@contact.phone, area_code: true)
+      %li
+        %b email:
+        = @contact.email
+      %li
+        %b address:
+        = @contact.address
 
-%p
-  %b Email:
-  = @contact.email
-%p
-  %b Phone:
-  = @contact.phone
-%p
-  %b Address:
-  = @contact.address
-%p
-  %b Name:
-  = @contact.name
+    %ul.button-group.radius.small-12.large-3.columns
+      %li
+        = link_to 'Edit', edit_contact_path(@contact), class: 'button tiny'
+      %li
+        = link_to 'Delete', @contact, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button tiny'
 
-= link_to 'Edit', edit_contact_path(@contact)
-\|
-= link_to 'Back', contacts_path
+= link_to 'Edit', edit_contact_path(@contact), class: 'button tiny'
+= link_to 'Back', contacts_path, class: 'button tiny'
