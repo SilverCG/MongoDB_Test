@@ -1,33 +1,28 @@
-%h1 Listing contacts
+%h1 Contacts
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Email
-      %th Phone
-      %th Address
-      %th Name
-      %th Created
-      %th Updated
-      %th
-      %th
-      %th
-
-  %tbody
+.row
+  .small-12.columns
     - @contacts.each do |contact|
-      %tr
-        %td= contact.user
-        %td= contact.email
-        %td= contact.phone
-        %td= contact.address
-        %td= contact.name
-        %td= contact.created_at
-        %td= contact.updated_at
-        %td= link_to 'Show', contact, class: 'button tiny success'
-        %td= link_to 'Edit', edit_contact_path(contact), class: 'button tiny success'
-        %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button tiny alert'
+      %div.small-12.contact
+        %div.row
+          %ul.small-12.large-8.columns
+            %li
+              %b Name:
+              = contact.name
+            %li
+              %b Phone:
+              = contact.phone
+            %li
+              %b email:
+              = contact.email
+            %li
+              %b address:
+              = contact.address
 
-%br
+          %ul.button-group.radius.small-12.large-3.columns
+            %li
+              = link_to 'Edit', edit_contact_path(contact), class: 'button tiny'
+            %li
+              = link_to 'Delete', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'button tiny'
 
 = link_to 'New Contact', new_contact_path, class: 'button tiny success'
